@@ -1,12 +1,15 @@
 import { useState } from "react";
-import gasolvePic1 from "./assets/gasolve1.jpg";
-import gasolvePic2 from "./assets/gasolve2.jpg";
-import gasolvePic3 from "./assets/gasolve3.jpg";
+import gasolvePic1 from "./assets/RED_LOGO.png";
+import gasolvePic2 from "./assets/gasolve1.jpg";
+import gasolvePic3 from "./assets/gasolve2.jpg";
 import profilePic from "./assets/picture.png";
 import airlinkImg from "./assets/airlink.png";
 import plantImg from "./assets/plant.png";
 import plantImg2 from "./assets/plant2.png";
 import plantImg3 from "./assets/plant3.png";
+import moodGardenImg1 from "./assets/moodgarden.jpg";
+import moodGardenImg2 from "./assets/moodgarden2.jpg";
+import moodGardenImg3 from "./assets/moodgarden3.jpg";
 
 export default function PortfolioApp() {
   const projects = [
@@ -50,6 +53,20 @@ export default function PortfolioApp() {
       ],
       github: "https://github.com/rowbertu/plant_disease_detection",
     },
+    {
+      title: "Mood Garden: Wellness Tracker",
+      role: "Frontend Mobile Developer",
+      images: [moodGardenImg, moodGardenImg, moodGardenImg], 
+      tech: ["React Native", "Expo", "JavaScript"],
+      description:
+        "Developed a gamified wellness mobile application that tracks daily habits, mood, and step counts with interactive plant growth visualizations.",
+      highlights: [
+        "Built dynamic UI components and animations",
+        "Designed a gamified step-tracking journey (Step Story)",
+        "Implemented daily check-ins for sleep, water, and mood",
+      ],
+      github: "https://github.com/rowbertu/mood-garden",
+    },
   ];
 
   const skills = {
@@ -59,7 +76,7 @@ export default function PortfolioApp() {
     Focus: ["Backend Development", "AI", "IoT", "Software Engineering"],
   };
 
-// Carousel Component
+ /// Carousel Component
   function ProjectCard({ project }) {
     const [currentImageIndex, setCurrentImageIndex] = useState(0);
     const [isHovering, setIsHovering] = useState(false);
@@ -124,6 +141,39 @@ export default function PortfolioApp() {
             View GitHub
           </a>
 
+          {/* Carousel Navigation - Only visible on hover */}
+          {isHovering && project.images.length > 1 && (
+            <>
+              <button
+                onClick={handlePrevImage}
+                className="absolute left-3 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-amber-950 font-bold py-2 px-3 rounded-lg shadow-md transition opacity-0 group-hover:opacity-100 duration-300"
+              >
+                ‹
+              </button>
+              <button
+                onClick={handleNextImage}
+                className="absolute right-3 top-1/2 -translate-y-1/2 z-20 bg-white/90 hover:bg-white text-amber-950 font-bold py-2 px-3 rounded-lg shadow-md transition opacity-0 group-hover:opacity-100 duration-300"
+              >
+                ›
+              </button>
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2">
+                {project.images.map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setCurrentImageIndex(index);
+                    }}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      index === currentImageIndex
+                        ? "bg-white w-6"
+                        : "bg-white/50 w-2 hover:bg-white/90"
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
         </div>
 
         {/* Card Content Area (Text and Tags Only) */}
@@ -217,7 +267,7 @@ export default function PortfolioApp() {
             </a>
 
             <a
-              href="/resume.pdf"
+              href="/RobertResume.pdf"
               className="px-6 py-3 border border-amber-200 rounded-2xl text-amber-900 hover:bg-amber-100 transition"
             >
               Download Resume
@@ -340,7 +390,7 @@ export default function PortfolioApp() {
             </div>
 
             <a
-              href="/resume.pdf"
+              href="/RobertResume.pdf"
               className="px-8 py-4 bg-amber-600 text-white rounded-2xl font-bold hover:bg-amber-700 hover:scale-105 transition"
             >
               Download CV
