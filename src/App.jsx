@@ -55,14 +55,14 @@ export default function PortfolioApp() {
     },
     {
       title: "Mood Garden: Wellness Tracker",
-      role: "Frontend Mobile Developer",
-      images: [moodGardenImg, moodGardenImg, moodGardenImg], 
+      role: "Mobile Developer",
+      images: [moodGardenImg1, moodGardenImg2, moodGardenImg3], 
       tech: ["React Native", "Expo", "JavaScript"],
       description:
-        "Developed a gamified wellness mobile application that tracks daily habits, mood, and step counts with interactive plant growth visualizations.",
+        "Developed a gamified wellness mobile application that tracks daily habits, mood, sleep, and water intake with interactive plant growth visualizations.",
       highlights: [
         "Built dynamic UI components and animations",
-        "Designed a gamified step-tracking journey (Step Story)",
+        "Designed a gamified system to encourage healthy habits",
         "Implemented daily check-ins for sleep, water, and mood",
       ],
       github: "https://github.com/rowbertu/mood-garden",
